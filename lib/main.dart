@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -25,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _batteryLevel = 0;
 
   Future<void> _getBatteryLevel() async {
-    const platform = MethodChannel('course.flutter.dev/battery');
+    const platform = MethodChannel('com.example.myapp/battery');
     try {
       final batteryLevel = await platform.invokeMethod('getBatteryLevel');
       setState(() {
@@ -41,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+    _getBatteryLevel();
     super.initState();
   }
 
